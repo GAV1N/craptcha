@@ -1,5 +1,8 @@
-%h1 New response
-
-= render 'form'
-
-= link_to 'Back', responses_path
+%h1 Contact Us
+%p
+  Thanks for your interest in #{@posting.title}.
+%p 
+  Please dial 
+  %strong #{number_to_phone Posting::TWILIO_NUMBER}
+  and enter PIN
+  %strong #{@response.pin}

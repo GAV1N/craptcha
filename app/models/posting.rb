@@ -1,4 +1,7 @@
 class Posting < ActiveRecord::Base
+  
+  TWILIO_NUMBER = "8887719434"
+  
   belongs_to :user
 
   has_many :responses
@@ -13,5 +16,6 @@ class Posting < ActiveRecord::Base
   default_scope lambda {
     User.current_user ? where("postings.user_id = #{User.current_user.id}") : nil
   }
+      
   
 end

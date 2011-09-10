@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%h2 Posting Info
+%p
+  %b Craigslist URL:
+  = link_to @posting.craigslist_url, @posting.craigslist_url
+
+%p
+  %b Response URL:
+  = posting_respond_url(@posting)
+
+%br   
+%h2 Responses                                          
+%table{:class => "index_table"}
+  %thead  
+    %th Number
+    %th Called At
+    %th IP Address
+    %th City
+  %tbody                      
+    - @posting.responses.each_with_index do |response, index|
+      %tr{:class => (index + 1).odd? ? "odd" : "even"}
+        %td=response.caller.number
+        %td=response.created_at
+        %td=response.ip
+        %td=response.city
+
+= link_to 'Edit', edit_posting_path(@posting)
+\|
+= link_to 'Back', postings_path

@@ -1,4 +1,4 @@
-ActiveAdmin.register Posting do
+ActiveAdmin.register Posting do     
   index do
     column "Title", :sortable => :title do |posting| 
       posting.title
@@ -7,6 +7,10 @@ ActiveAdmin.register Posting do
     column "Craiglist URL", :sortable => :craigslist_url do |posting|
       link_to posting.craigslist_url, posting.craigslist_url, :target => "new"
     end        
+           
+    column "Response URL" do |posting|
+      posting_respond_url(posting)
+    end                   
     
     default_actions  
   end      
@@ -16,11 +20,8 @@ ActiveAdmin.register Posting do
   filter :craigslist_url
   filter :created_at
   
-  show do
-    h3 posting.title
-    div do
-      posting.description
-    end
+  show do  
+    render "postings/show"
   end   
   
   sidebar :help do

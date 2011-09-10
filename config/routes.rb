@@ -7,7 +7,9 @@ Craptcha::Application.routes.draw do
 
   resources :responses
 
-  resources :postings
+  resources :postings do
+    get 'respond', :to => 'responses#new'
+  end
 
   devise_for :users      
   
