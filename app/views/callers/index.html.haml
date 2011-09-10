@@ -1,0 +1,19 @@
+%h1 Listing callers
+
+%table
+  %tr
+    %th Phone
+    %th
+    %th
+    %th
+
+  - @callers.each do |caller|
+    %tr
+      %td= caller.phone
+      %td= link_to 'Show', caller
+      %td= link_to 'Edit', edit_caller_path(caller)
+      %td= link_to 'Destroy', caller, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Caller', new_caller_path

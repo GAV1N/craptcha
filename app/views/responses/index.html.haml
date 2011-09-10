@@ -1,0 +1,31 @@
+%h1 Listing responses
+
+%table
+  %tr
+    %th Posting
+    %th Caller
+    %th Ip
+    %th Pin
+    %th Generated at
+    %th Called at
+    %th Twilio sid
+    %th
+    %th
+    %th
+
+  - @responses.each do |response|
+    %tr
+      %td= response.posting_id
+      %td= response.caller_id
+      %td= response.ip
+      %td= response.pin
+      %td= response.generated_at
+      %td= response.called_at
+      %td= response.twilio_sid
+      %td= link_to 'Show', response
+      %td= link_to 'Edit', edit_response_path(response)
+      %td= link_to 'Destroy', response, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Response', new_response_path

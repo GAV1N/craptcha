@@ -1,5 +1,23 @@
 Craptcha::Application.routes.draw do
-  devise_for :users
+  ActiveAdmin.routes(self)
+
+  # devise_for :admin_users, ActiveAdmin::Devise.config
+
+  resources :callers
+
+  resources :responses
+
+  resources :postings
+
+  devise_for :users      
+  
+  root :to => 'admin#dashboard'
+  
+                                   
+  # devise_scope :user do
+  #   get "login", :to => "devise/sessions#new"
+  #   get "signup", :to => "devise/registrations#new"
+  # end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

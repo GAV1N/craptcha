@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Posting:
+  = @response.posting_id
+%p
+  %b Caller:
+  = @response.caller_id
+%p
+  %b Ip:
+  = @response.ip
+%p
+  %b Pin:
+  = @response.pin
+%p
+  %b Generated at:
+  = @response.generated_at
+%p
+  %b Called at:
+  = @response.called_at
+%p
+  %b Twilio sid:
+  = @response.twilio_sid
+
+= link_to 'Edit', edit_response_path(@response)
+\|
+= link_to 'Back', responses_path

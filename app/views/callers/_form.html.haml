@@ -1,0 +1,13 @@
+= form_for @caller do |f|
+  -if @caller.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@caller.errors.count, "error")} prohibited this caller from being saved:"
+      %ul
+        - @caller.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :phone
+    = f.text_field :phone
+  .actions
+    = f.submit 'Save'

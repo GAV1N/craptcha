@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @posting.user_id
+%p
+  %b Craigslist url:
+  = @posting.craigslist_url
+
+= link_to 'Edit', edit_posting_path(@posting)
+\|
+= link_to 'Back', postings_path

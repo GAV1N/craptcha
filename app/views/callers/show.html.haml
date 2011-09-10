@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Phone:
+  = @caller.phone
+
+= link_to 'Edit', edit_caller_path(@caller)
+\|
+= link_to 'Back', callers_path

@@ -1,0 +1,16 @@
+= form_for @posting do |f|
+  -if @posting.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@posting.errors.count, "error")} prohibited this posting from being saved:"
+      %ul
+        - @posting.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :user_id
+    = f.number_field :user_id
+  .field
+    = f.label :craigslist_url
+    = f.text_field :craigslist_url
+  .actions
+    = f.submit 'Save'
