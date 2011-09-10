@@ -1,22 +1,23 @@
 Craptcha::Application.routes.draw do
-  ActiveAdmin.routes(self)
 
   # devise_for :admin_users, ActiveAdmin::Devise.config
-
-  resources :callers
 
   resources :responses
 
   resources :postings do
     get 'respond', :to => 'responses#new'
   end
+              
 
   devise_for :users      
   
   root :to => 'admin#dashboard'
   
        
-  match "twiml/:action" => "twiml", :as => "twiml"
+  match "twiml/:action" => "twiml", :as => "twiml"    
+  
+  ActiveAdmin.routes(self)
+  
   
   # devise_scope :user do
   #   get "login", :to => "devise/sessions#new"
