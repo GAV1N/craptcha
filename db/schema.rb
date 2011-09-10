@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110910195736) do
+ActiveRecord::Schema.define(:version => 20110910215642) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(:version => 20110910195736) do
     t.integer  "posting_id"
     t.integer  "caller_id"
     t.string   "ip"
-    t.string   "pin",          :limit => 8
+    t.string   "pin",           :limit => 8
     t.string   "city"
     t.float    "lat"
     t.float    "lng"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(:version => 20110910195736) do
     t.string   "twilio_sid"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "transcription"
   end
 
   add_index "responses", ["caller_id"], :name => "index_responses_on_caller_id"

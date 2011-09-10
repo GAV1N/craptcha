@@ -16,14 +16,16 @@
     %th Number
     %th Called At
     %th IP Address
-    %th City
+    %th City         
+    %th Transcription
   %tbody                      
     - @posting.responses.each_with_index do |response, index|
       %tr{:class => (index + 1).odd? ? "odd" : "even"}
         %td=response.caller.number
         %td=response.created_at
         %td=response.ip
-        %td=response.city
+        %td=response.city      
+        %th=response.transcription
 
 = link_to 'Edit', edit_posting_path(@posting)
 \|
