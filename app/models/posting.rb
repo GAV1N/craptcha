@@ -8,6 +8,10 @@ class Posting < ActiveRecord::Base
   
   scope :recent, lambda { |num|
    limit(num ||5).order("created_at desc")
+  }                               
+  
+  default_scope lambda {
+    User.current_user ? where("postings.user_id = #{User.current_user.id}") : nil
   }
   
 end

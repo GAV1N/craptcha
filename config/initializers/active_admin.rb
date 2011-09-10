@@ -35,7 +35,7 @@ ActiveAdmin.setup do |config|
   # This setting changes the method which Active Admin calls
   # within the controller.
   # config.authentication_method = :authenticate_admin_user!
-  config.authentication_method = :authenticate_user!
+  config.authentication_method = :authenticate_and_set_current_user!
 
 
   # == Current User
@@ -86,7 +86,7 @@ ActiveAdmin.setup do |config|
   # You can add before, after and around filters to all of your
   # Active Admin resources from here. 
   #
-  # config.before_filter :do_something_awesome
+  # config.before_filter :set_current_user
 
 
   # == Register Stylesheets & Javascripts
