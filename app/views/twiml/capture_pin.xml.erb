@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+	<Say>Thank you.  You may now record your message.</Say>
+	<Record playBeep="true" action="<%= twiml_url("capture_recording_sid") %>" method="POST" maxlength="120" transcribe="true" transcribeCallback="<%= twiml_url("capture_transcription") %>"></Record>
+</Response>
