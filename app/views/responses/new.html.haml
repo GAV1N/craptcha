@@ -1,8 +1,14 @@
-%h1 Contact Us
-%p
-  Thanks for your interest in #{@posting.title}.
-%p 
-  Please dial 
-  %strong #{number_to_phone Posting::TWILIO_NUMBER}
-  and enter PIN
-  %strong #{@response.pin}
+%div{:style=>"padding:40px"}
+  %center
+    = image_tag "logo.png"  
+    %br
+    %br    
+    %br
+    %h1 Contact Us
+    %p
+      Thanks for your interest in #{@posting.title}.
+    %p 
+      Please dial 
+      %strong #{number_to_phone Posting::TWILIO_NUMBER}
+      and enter PIN
+      %strong #{@response.pin}

@@ -1,31 +1,23 @@
 class ResponsesController < ApplicationController
-  # GET /responses
-  # GET /responses.json
-  # def index
-  #   @responses = Response.all
-  # 
-  #   respond_to do |format|
-  #     format.html # index.html.erb
-  #     format.json { render json: @responses }
-  #   end
-  # end
 
-  # GET /responses/1
-  # GET /responses/1.json
-  # def show
-  #   @response = Response.find(params[:id])
-  # 
-  #   respond_to do |format|
-  #     format.html # show.html.erb
-  #     format.json { render json: @response }
-  #   end
-  # end
-
-  # GET /responses/new
-  # GET /responses/new.json
-  def new                    
+  def new                                        
+    # ip = request.ip             
+    dummy_ips = [
+      "192.131.1.26", # Fort Collins, CO	
+      "173.204.115.234", # San Francisco, CA
+      "66.31.248.0", # Burlington, VT
+      "24.21.162.22", # Portland, OR
+      "12.17.135.111", # Seattle, WA
+      "209.198.148.0", # Austin, TX
+      "64.90.182.55", # New York, NY
+      "141.164.32.52", # New Orleans, LA
+      "165.110.230.011" # Washington, DC
+    ]
+       
+    ip = dummy_ips.sample 
+    
     @posting = Posting.find(params[:posting_id])
-    @response = @posting.responses.create
+    @response = @posting.responses.create(:ip => ip)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -33,52 +25,4 @@ class ResponsesController < ApplicationController
     end
   end
 
-  # GET /responses/1/edit
-  # def edit
-  #    @response = Response.find(params[:id])
-  #  end  
-
-  # POST /responses
-  # POST /responses.json
-  # def create
-  #   @response = Response.new(params[:response])
-  # 
-  #   respond_to do |format|
-  #     if @response.save
-  #       format.html { redirect_to @response, notice: 'Response was successfully created.' }
-  #       format.json { render json: @response, status: :created, location: @response }
-  #     else
-  #       format.html { render action: "new" }
-  #       format.json { render json: @response.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
-  # PUT /responses/1
-  # PUT /responses/1.json
-  # def update
-  #   @response = Response.find(params[:id])
-  # 
-  #   respond_to do |format|
-  #     if @response.update_attributes(params[:response])
-  #       format.html { redirect_to @response, notice: 'Response was successfully updated.' }
-  #       format.json { head :ok }
-  #     else
-  #       format.html { render action: "edit" }
-  #       format.json { render json: @response.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
-  # DELETE /responses/1
-  # DELETE /responses/1.json
-  # def destroy
-  #   @response = Response.find(params[:id])
-  #   @response.destroy
-  # 
-  #   respond_to do |format|
-  #     format.html { redirect_to responses_url }
-  #     format.json { head :ok }
-  #   end
-  # end
 end

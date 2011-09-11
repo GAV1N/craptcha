@@ -5,7 +5,8 @@ class TwimlController < ApplicationController
   def capture_pin  
     phone       = params["From"]
     twilio_sid  = params["CallSid"]
-    pin         = params["Digits"]
+    pin         = params["Digits"]  
+
     @response = Response.find_by_pin(pin)      
     if @response
       @caller   = Caller.find_or_create_by_phone(phone)
@@ -29,11 +30,19 @@ class TwimlController < ApplicationController
       @response.save
     end                                      
     
-    render "capture_recording.xml"
+    render "capture_recording_sid.xml"
   end            
   
-  def capture_transcription
+  def capture_transcription       
+    twilio_sid    = params["CallSid"]
+    transcription = params["TranscriptionText"]     
     
+    @response = Response.find_by_twilio_sid(twilio_sid)
+    
+    if @response      
+      @response.transcription = transcription
+      @response.save
+    end                                      
   end            
   
 end

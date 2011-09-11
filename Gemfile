@@ -35,6 +35,7 @@ gem "jquery-rails"
 # gem "rails_admin", :git => "git://github.com/sferik/rails_admin.git"
 gem 'activeadmin'
 gem "meta_search",    '>= 1.1.0.pre'
+gem "faraday"
 
 group :production do
   gem "pg"

@@ -19,16 +19,18 @@
     %th City         
     %th Transcription                   
   %tbody                      
-    - @posting.responses.each_with_index do |response, index|
+    - @posting.responses.each_with_index do |response, index|    
+      - next if response.caller.blank?
       %tr{:class => (index + 1).odd? ? "odd" : "even"}
-        %td=response.caller.number
+        %td=response.caller.phone
         %td=response.created_at
         %td=response.ip
         %td=response.city      
         %td
+          =response.transcription
+          %br
           =link_to "Listen", response.recording_url
-          %p
-            =response.transcription
+            
         
 
 = link_to 'Edit', edit_posting_path(@posting)
